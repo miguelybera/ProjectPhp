@@ -36,7 +36,7 @@
                 $this->propertyType = $pType;
             }
             public function addProperty(){
-                $newProperty = "Name: ". $this->propertyName . "<br/>" ."Description: ". $this->propertyDescription . "<br/>" ." location: ". $this->propertyLocation . "Lot Area: ". $this->propertyLotArea . "<br/>" . "Type: ". $this->propertyType . "<br/>" ." price: ". $this->propertyPrice ."<br/>";
+                $newProperty = "Name: ". $this->propertyName . "<br/>" ."Description: ". $this->propertyDescription . "<br/>" ." location: ". $this->propertyLocation .  "<br/>" ."Lot Area: ". $this->propertyLotArea . "<br/>" . "Type: ". $this->propertyType . "<br/>" ." price: ". $this->propertyPrice ."<br/>";
                 $this->setProperty($newProperty);
             }
             }
