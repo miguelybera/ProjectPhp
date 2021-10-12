@@ -21,23 +21,29 @@
 
         class Unit extends Property{
             private $propertyName;
+            private $propertyDescription;
             private $propertyLocation;
+            private $propertyLotArea;
+            private $propertyType;
             private $propertyPrice;
 
-            public function setThree($name, $location, $price){
+            public function setPropertyValues($name, $location, $price, $description, $lotArea, $pType){
                 $this->propertyName = $name;
                 $this->propertyLocation = $location;
                 $this->propertyPrice = $price;
+                $this->propertyDescription = $description;
+                $this->propertyLotArea = $lotArea;
+                $this->propertyType = $pType;
             }
             public function addProperty(){
-                $newProperty = "Name: ". $this->propertyName . " location: ". $this->propertyLocation . " price: ". $this->propertyPrice;
+                $newProperty = "Name: ". $this->propertyName . "<br/>" ."Description: ". $this->propertyDescription . "<br/>" ." location: ". $this->propertyLocation . "Lot Area: ". $this->propertyLotArea . "<br/>" . "Type: ". $this->propertyType . "<br/>" ." price: ". $this->propertyPrice ."<br/>";
                 $this->setProperty($newProperty);
             }
             }
             $miguel = new Unit();
-            $miguel->setThree('House in Paranaque', 'Paranaque', '8.5 mill');
+            $miguel->setPropertyValues('House in Greenheights', 'Sucat Paranaque', '9 million', 'This is a 7 yr old house', '25 sqm', 'Townhouse');
             $miguel->addProperty();
-            $miguel->setThree('House in QC', 'QC', '8.8 mill');
+            $miguel->setPropertyValues('House in Twinville', 'Marikina', '10 million', 'This is a 57 yr old house', '225 sqm', 'Mansion');
             $miguel->addProperty();
             $miguel->getProperty();
     
