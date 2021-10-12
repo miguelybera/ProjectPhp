@@ -9,11 +9,18 @@
 
         #Abstraction
         abstract class Admin{
+
+            #override $val parent class
+            public $val = "admin";
             public abstract function view();
         }
 
         #Inheritance
         class Property extends Admin{
+
+            #override $val child class
+            public $val = "property";
+
             private $propertyName;
             private $propertyDescription;
             private $propertyLocation;
@@ -49,6 +56,13 @@
             $miguel->setPropertyValues('House in Twinville', 'Marikina', '10 million', 'This is a 57 yr old house', '225 sqm', 'Mansion');
             $miguel->addProperty();
             $miguel->view();
+
+            #override print
+            echo $miguel->val . '<br>';
+            echo $firstHouse->val . '<br>';
+            
+
+               
         ?>
     </body>
 </html>
