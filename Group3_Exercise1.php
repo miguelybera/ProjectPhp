@@ -6,18 +6,13 @@
     <body>
         <h1>Exercise 1 Group 3</h1>
         <?php
-        class Admin{
-            private $propertyLot = array();
-            public function viewProperties(){
-                for($i = 0; $i<count($this->propertyLot); $i++){
-                    print_r($this->propertyLot[$i] . "<br/>");
-                }
-            }
-            public function createProperty($property){
-                $this->propertyLot[] = $property;
-        }
+
+        #Abstraction
+        abstract class Admin{
+            public abstract function view();
         }
 
+        #Inheritance
         class Property extends Admin{
             private $propertyName;
             private $propertyDescription;
@@ -25,7 +20,15 @@
             private $propertyLotArea;
             private $propertyType;
             private $propertyPrice;
-
+            private $propertyLot = array();
+            public function view(){
+                for($i = 0; $i<count($this->propertyLot); $i++){
+                    print_r($this->propertyLot[$i] . "<br/>");
+                }
+            }
+            public function createProperty($property){
+                $this->propertyLot[] = $property;
+        }
             public function setPropertyValues($name, $location, $price, $description, $lotArea, $pType){
                 $this->propertyName = $name;
                 $this->propertyLocation = $location;
@@ -34,6 +37,7 @@
                 $this->propertyLotArea = $lotArea;
                 $this->propertyType = $pType;
             }
+        
             public function addProperty(){
                 $newProperty = "Name: ". $this->propertyName . "<br/>" ."Description: ". $this->propertyDescription . "<br/>" ." location: ". $this->propertyLocation .  "<br/>" ."Lot Area: ". $this->propertyLotArea . "<br/>" . "Type: ". $this->propertyType . "<br/>" ." price: ". $this->propertyPrice ."<br/>";
                 $this->createProperty($newProperty);
@@ -44,9 +48,7 @@
             $miguel->addProperty();
             $miguel->setPropertyValues('House in Twinville', 'Marikina', '10 million', 'This is a 57 yr old house', '225 sqm', 'Mansion');
             $miguel->addProperty();
-            $miguel->viewProperties();
-    
-
+            $miguel->view();
         ?>
     </body>
 </html>
