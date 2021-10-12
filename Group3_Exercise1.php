@@ -10,15 +10,13 @@
         #Abstraction
         abstract class Admin{
 
-            #override $val parent class
-            public $val = "admin";
             public abstract function view();
         }
 
         #Inheritance
         class Property extends Admin{
 
-            #override $val child class
+            #override $val parent class
             public $val = "property";
 
             private $propertyName;
@@ -57,9 +55,18 @@
             $miguel->addProperty();
             $miguel->view();
 
-            #override print
+            class Unit extends Property{
+
+            #override $val child class
+            public $val = "unit";
+            
+            }
+
+            $gran = new Unit();
+           
+            #override print 
             echo $miguel->val . '<br>';
-            echo $firstHouse->val . '<br>';
+            echo $gran->val . '<br>';
             
 
                
