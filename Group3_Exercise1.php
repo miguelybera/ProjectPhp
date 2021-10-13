@@ -56,10 +56,10 @@
             $this->createProperty($newProperty);
         }
 
-        public function displayA($var)
+        public function display($var)
         {
             #overriding #2 
-            echo "This is example of overriding in PROPERTY class";
+            echo 'This is example of overriding in PROPERTY class <br>';
             echo $var->propertyName . '<br>';
             echo $var->propertyDescription . '<br>';
             echo $var->propertyLocation . '<br>';
@@ -74,7 +74,7 @@
         #override $val child class
         public $val = "This is example of overriding in UNIT Class";
 
-        public function displayA($var)
+        public function display($var)
         {
             #overriding #2 
             echo $var->val . '<br>';
@@ -83,23 +83,15 @@
 
 
     $miguel = new Property();
-    $miguel->setPropertyValues('House in Greenheights', 'Sucat Paranaque', '9 million', 'This is a 7 yr old house', '25 sqm', 'Townhouse');
-    $miguel->addProperty();
-    $miguel->setPropertyValues('House in Twinville', 'Marikina', '10 million', 'This is a 57 yr old house', '225 sqm', 'Mansion');
-    $miguel->addProperty();
-    $miguel->view();
+        $miguel->setPropertyValues('House in Greenheights', 'Sucat Paranaque', '9 million', 'This is a 7 yr old house', '25 sqm', 'Townhouse');
+        $miguel->addProperty();
+        $miguel->view();
 
-    $miguel->displayA($miguel);
-
+    $miguel->display($miguel);
     echo '<br>';
 
-
     $gran = new Unit();
-
-    $gran->displayA($gran);
-
-
-
+        $gran->display($gran);
 
     ?>
 </body>
