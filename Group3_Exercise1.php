@@ -69,16 +69,16 @@
         }
 
         #overloading method
-        function __call($valOne, $valTwo)
+        function __call($addTag, $tags)
         {
-            if($valOne == "addTag"){
-                $counter = count($valTwo);
+            if($addTag == "addTag"){
+                $counter = count($tags);
                 switch ($counter) {
                     case 2:
-                        echo "There are " . $counter . " user inputs of " . ": " . $valTwo[0] . " " . $valTwo[1];
+                        echo "There are " . $counter . " user inputs of " . ": " . $tags[0] . " " . $tags[1];
                         break;
                     case 3:
-                        echo "There are " . $counter . " user inputs of " . ": " . $valTwo[0] . " "  . $valTwo[1] . " "  . $valTwo[2];
+                        echo "There are " . $counter . " user inputs of " . ": " . $tags[0] . " "  . $tags[1] . " "  . $tags[2];
                         break;
                     default:
                         echo "Accepts only up to 3 tags";
