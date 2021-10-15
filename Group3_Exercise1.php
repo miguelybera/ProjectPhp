@@ -84,6 +84,20 @@
                         echo "Accepts only up to 3 tags";
                 }
             }
+
+            if($addTag == "inquiry"){
+                $counter = count($tags);
+                switch ($counter) {
+                    case 1:
+                        echo "Customer Name: " .  $tags[0];
+                        break;
+                    case 2:
+                        echo "Contact Information: </br>Email: " . $tags[0] . "</br> Contact Number: "  . $tags[1] ."</br>";
+                        break;
+                    default:
+                        echo "Accepts only up to 2 tags";
+                }
+            }
            
         }
     }
@@ -112,7 +126,11 @@
     echo '<br>';
 
     # executing overload method
-    $groupActOne->addTag("quezon", "city", "manila");
+    $groupActOne->addTag("Quezon", "City", "Manila");
+    echo '<br>';
+    $groupActOne->inquiry("Finn Murtens");
+    echo '<br>';
+    $groupActOne->inquiry("jessica@gmail.com", "09187654321");
     echo '<br>';
 
     #execute override child class
