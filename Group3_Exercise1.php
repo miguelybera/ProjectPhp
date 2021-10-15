@@ -67,6 +67,25 @@
             echo $var->propertyType . '<br>';
             echo $var->propertyPrice . '<br>';
         }
+
+        #overloading method
+        function __call($valOne, $valTwo)
+        {
+            if($valOne == "addTag"){
+                $counter = count($valTwo);
+                switch ($counter) {
+                    case 2:
+                        echo "There are " . $counter . " user inputs of " . ": " . $valTwo[0] . " " . $valTwo[1];
+                        break;
+                    case 3:
+                        echo "There are " . $counter . " user inputs of " . ": " . $valTwo[0] . " "  . $valTwo[1] . " "  . $valTwo[2];
+                        break;
+                    default:
+                        echo "Accepts only up to 3 tags";
+                }
+            }
+           
+        }
     }
 
     class Unit extends Property
@@ -83,17 +102,25 @@
 
 
     $miguel = new Property();
-        $miguel->setPropertyValues('House in Greenheights', 'Sucat Paranaque', '9 million', 'This is a 7 yr old house', '25 sqm', 'Townhouse');
-        $miguel->addProperty();
-        $miguel->view();
+    $miguel->setPropertyValues('House in Greenheights', 'Sucat Paranaque', '9 million', 'This is a 7 yr old house', '25 sqm', 'Townhouse');
+    $miguel->addProperty();
+    $miguel->view();
 
+    
+    #execute override parent class
     $miguel->display($miguel);
     echo '<br>';
 
+    # executing overload method
+    $miguel->addTag("quezon", "city", "manila");
+    echo '<br>';
+
+    #execute override child class
     $gran = new Unit();
-        $gran->display($gran);
+    $gran->display($gran);
 
     ?>
+
 </body>
 
 </html>
