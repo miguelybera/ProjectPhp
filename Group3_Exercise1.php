@@ -101,23 +101,23 @@
     }
 
 
-    $miguel = new Property();
-    $miguel->setPropertyValues('House in Greenheights', 'Sucat Paranaque', '9 million', 'This is a 7 yr old house', '25 sqm', 'Townhouse');
-    $miguel->addProperty();
-    $miguel->view();
+    $groupActOne = new Property();
+    $groupActOne->setPropertyValues('House in Greenheights', 'Sucat Paranaque', '9 million', 'This is a 7 yr old house', '25 sqm', 'Townhouse');
+    $groupActOne->addProperty();
+    $groupActOne->view();
 
     
     #execute override parent class
-    $miguel->display($miguel);
+    $groupActOne->display($groupActOne);
     echo '<br>';
 
     # executing overload method
-    $miguel->addTag("quezon", "city", "manila");
+    $groupActOne->addTag("quezon", "city", "manila");
     echo '<br>';
 
     #execute override child class
-    $gran = new Unit();
-    $gran->display($gran);
+    $groupActTwo = new Unit();
+    $groupActTwo->display($groupActTwo);
 
     ?>
 
