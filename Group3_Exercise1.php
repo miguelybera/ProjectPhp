@@ -12,7 +12,7 @@
     abstract class Admin
     {
         public abstract function view();
-        public abstract function create($property);
+        public abstract function create($valueVar);
     }
 
     #Inheritance
