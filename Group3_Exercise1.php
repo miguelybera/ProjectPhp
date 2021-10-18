@@ -1,35 +1,31 @@
 <html>
 
 <head>
-    <title>Exercise 1 Group 3</title>
+    <title>Lab Act 1 Group 3</title>
 </head>
 
 <body>
-    <h1>Exercise 1 Group 3</h1>
+    <h1>Lab Act 1 Group 3</h1>
     <?php
 
     #Abstraction
     abstract class Admin
     {
-
         public abstract function view();
+        public abstract function create($property);
     }
 
     #Inheritance
     class Property extends Admin
     {
-
-        #override $val parent class
-        public $val = "property";
-
         public $propertyName;
         public $propertyDescription;
         public $propertyLocation;
         public $propertyLotArea;
         public $propertyType;
         public $propertyPrice;
-        public $myProperties = array();
         public $propertyTags = array();
+        public $myProperties = array();
         public function view()
         {
             for ($i = 0; $i < count($this->myProperties); $i++) {
@@ -37,11 +33,11 @@
             }
         }
 
-        public function createProperty($property)
+        public function create($property)
         {
             $this->myProperties[] = $property;
         }
-        public function setPropertyValues($name, $location, $price, $description, $lotArea, $pType)
+        public function setPropertyValues($name, $location, $price, $description, $lotArea, $pType, $pTags)
         {
             $this->propertyName = $name;
             $this->propertyLocation = $location;
@@ -49,94 +45,23 @@
             $this->propertyDescription = $description;
             $this->propertyLotArea = $lotArea;
             $this->propertyType = $pType;
+            $this-> propertyTags = $pTags;
         }
 
         public function addProperty()
         {
-            $newProperty = "Name: " . $this->propertyName . "<br/>" . "Description: " . $this->propertyDescription . "<br/>" . " location: " . $this->propertyLocation .  "<br/>" . "Lot Area: " . $this->propertyLotArea . "<br/>" . "Type: " . $this->propertyType . "<br/>" . " price: " . $this->propertyPrice . "<br/>";
-            $this->createProperty($newProperty);
+            $newProperty = "Name: " . $this->propertyName . "<br/>" . "Description: " . $this->propertyDescription . "<br/>" . " location: " . $this->propertyLocation .  "<br/>" . "Lot Area: " . $this->propertyLotArea . "<br/>" . "Type: " . $this->propertyType . "<br/>" . " price: " . $this->propertyPrice . "<br/>". " tags: " . implode(" ",$this->propertyTags) . "<br/>";
+            $this->create($newProperty);
         }
 
-        public function display($var)
-        {
-            #overriding #2 
-            echo 'This is example of overriding in PROPERTY class <br>';
-            echo $var->propertyName . '<br>';
-            echo $var->propertyDescription . '<br>';
-            echo $var->propertyLocation . '<br>';
-            echo $var->propertyLotArea . '<br>';
-            echo $var->propertyType . '<br>';
-            echo $var->propertyPrice . '<br>';
-        }
-
-        #overloading method
-        function __call($addTag, $tags)
-        {
-            if($addTag == "addTag"){
-                $counter = count($tags);
-                switch ($counter) {
-                    case 2:
-                        echo "There are " . $counter . " user inputs of " . ": " . $tags[0] . " " . $tags[1];
-                        break;
-                    case 3:
-                        echo "There are " . $counter . " user inputs of " . ": " . $tags[0] . " "  . $tags[1] . " "  . $tags[2];
-                        break;
-                    default:
-                        echo "Accepts only up to 3 tags";
-                }
-            }
-
-            if($addTag == "inquiry"){
-                $counter = count($tags);
-                switch ($counter) {
-                    case 1:
-                        echo "Customer Name: " .  $tags[0];
-                        break;
-                    case 2:
-                        echo "Contact Information: </br>Email: " . $tags[0] . "</br> Contact Number: "  . $tags[1] ."</br>";
-                        break;
-                    default:
-                        echo "Accepts only up to 2 tags";
-                }
-            }
-           
-        }
     }
-
-    class Unit extends Property
-    {
-        #override $val child class
-        public $val = "This is example of overriding in UNIT Class";
-
-        public function display($var)
-        {
-            #overriding #2 
-            echo $var->val . '<br>';
-        }
-    }
-
 
     $groupActOne = new Property();
-    $groupActOne->setPropertyValues('House in Greenheights', 'Sucat Paranaque', '9 million', 'This is a 7 yr old house', '25 sqm', 'Townhouse');
+    $groupActOne->setPropertyValues('House in Greenheights', 'Sucat Paranaque', '9 million', 'This is a 7 yr old house', '25 sqm', 'Townhouse', ['brand new house', 'new']);
+    $groupActOne->addProperty();
+    $groupActOne->setPropertyValues('House in Ermita', 'Manila', '9 million', 'This is a 17 yr old house', '35 sqm', 'Mansion', ['old house', 'duplex', 'far']);
     $groupActOne->addProperty();
     $groupActOne->view();
-
-    
-    #execute override parent class
-    $groupActOne->display($groupActOne);
-    echo '<br>';
-
-    # executing overload method
-    $groupActOne->addTag("Quezon", "City", "Manila");
-    echo '<br>';
-    $groupActOne->inquiry("Finn Murtens");
-    echo '<br>';
-    $groupActOne->inquiry("jessica@gmail.com", "09187654321");
-    echo '<br>';
-
-    #execute override child class
-    $groupActTwo = new Unit();
-    $groupActTwo->display($groupActTwo);
 
     ?>
 
