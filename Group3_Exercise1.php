@@ -23,22 +23,23 @@
         public $val = "property";
 
         public $propertyName;
-        private $propertyDescription;
-        private $propertyLocation;
-        private $propertyLotArea;
-        private $propertyType;
-        private $propertyPrice;
-        private $propertyLot = array();
+        public $propertyDescription;
+        public $propertyLocation;
+        public $propertyLotArea;
+        public $propertyType;
+        public $propertyPrice;
+        public $myProperties = array();
+        public $propertyTags = array();
         public function view()
         {
-            for ($i = 0; $i < count($this->propertyLot); $i++) {
-                print_r($this->propertyLot[$i] . "<br/>");
+            for ($i = 0; $i < count($this->myProperties); $i++) {
+                print_r($this->myProperties[$i] . "<br/>");
             }
         }
 
         public function createProperty($property)
         {
-            $this->propertyLot[] = $property;
+            $this->myProperties[] = $property;
         }
         public function setPropertyValues($name, $location, $price, $description, $lotArea, $pType)
         {
