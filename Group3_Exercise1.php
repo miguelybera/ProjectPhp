@@ -25,7 +25,6 @@
         public $propertyType;
         public $propertyPrice;
         public $inquiryMsg;
-        public $propertyTags = array();
         public $myProperties = array();
         public function view()
         {
@@ -38,7 +37,7 @@
         {
             $this->myProperties[] = $property;
         }
-        public function setPropertyValues($name, $location, $price, $description, $lotArea, $pType, $pTags)
+        public function setPropertyValues($name, $location, $price, $description, $lotArea, $pType)
         {
             $this->propertyName = $name;
             $this->propertyLocation = $location;
@@ -46,12 +45,11 @@
             $this->propertyDescription = $description;
             $this->propertyLotArea = $lotArea;
             $this->propertyType = $pType;
-            $this-> propertyTags = $pTags;
         }
 
         public function addProperty()
         {
-            $newProperty = "Name: " . $this->propertyName . "<br/>" . "Description: " . $this->propertyDescription . "<br/>" . " location: " . $this->propertyLocation .  "<br/>" . "Lot Area: " . $this->propertyLotArea . "<br/>" . "Type: " . $this->propertyType . "<br/>" . " price: " . $this->propertyPrice . "<br/>". " tags: " . implode(" ",$this->propertyTags) . "<br/>";
+            $newProperty = "Name: " . $this->propertyName . "<br/>" . "Description: " . $this->propertyDescription . "<br/>" . " location: " . $this->propertyLocation .  "<br/>" . "Lot Area: " . $this->propertyLotArea . "<br/>" . "Type: " . $this->propertyType . "<br/>" . " price: " . $this->propertyPrice . "<br/>";
             $this->create($newProperty);
         }
 
@@ -90,15 +88,16 @@
     }
     echo 'Properties' . '<br/>';
     $prop = new Property();
-    $prop->setPropertyValues('House in Greenheights', 'Sucat Paranaque', '9 million', 'This is a 7 yr old house', '25 sqm', 'Townhouse', ['brand new house', 'new']);
+    $prop->setPropertyValues('House in Greenheights', 'Sucat Paranaque', '9 million', 'This is a 7 yr old house', '25 sqm', 'Townhouse');
     $prop->addProperty();
-    $prop->setPropertyValues('House in Ermita', 'Manila', '9 million', 'This is a 17 yr old house', '35 sqm', 'Mansion', ['old house', 'duplex', 'far']);
+    $prop->setPropertyValues('House in Ermita', 'Manila', '9 million', 'This is a 17 yr old house', '35 sqm', 'Mansion');
     $prop->addProperty();
     $prop->view();
 
     echo 'Inquiries' . '<br/>';
     $inq = new Inquiries();
-    $inq->setInquiryValues('Jose Miguel Ybera', 'josemiguel.ybera.iics@ust.edu.ph', '09123456789', 'Hi i would like to inquire for a house in your page', 'inquiry', '10/19/2021');
+    $timezone = date_default_timezone_get();
+    $inq->setInquiryValues('Jose Miguel Ybera', 'josemiguel.ybera.iics@ust.edu.ph', '09123456789', 'Hi i would like to inquire for a house in your page', 'inquiry', date("Y/m/d"));
     $inq->addInquiry();
     $inq->view();
  
