@@ -24,6 +24,7 @@
         public $propertyLotArea;
         public $propertyType;
         public $propertyPrice;
+        public $inquiryMsg;
         public $propertyTags = array();
         public $myProperties = array();
         public function view()
@@ -54,6 +55,16 @@
             $this->create($newProperty);
         }
 
+        public function createInquiry($inquiryMsg)
+        {
+            $this->inquiryMsg = $inquiryMsg;
+        }
+
+        public function displayInquiry()
+        {
+            echo "Inquiry: " . $this->inquiryMsg;
+        }
+
     }
 
     $groupActOne = new Property();
@@ -62,6 +73,11 @@
     $groupActOne->setPropertyValues('House in Ermita', 'Manila', '9 million', 'This is a 17 yr old house', '35 sqm', 'Mansion', ['old house', 'duplex', 'far']);
     $groupActOne->addProperty();
     $groupActOne->view();
+
+    $groupActOne->createInquiry('How much for this house? I would like to inquire and maybe book an appointment');
+    $groupActOne->displayInquiry();
+ 
+
 
     ?>
 
