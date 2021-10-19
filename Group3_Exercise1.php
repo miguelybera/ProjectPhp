@@ -55,27 +55,52 @@
             $this->create($newProperty);
         }
 
-        public function createInquiry($inquiryMsg)
-        {
-            $this->inquiryMsg = $inquiryMsg;
-        }
-
-        public function displayInquiry()
-        {
-            echo "Inquiry: " . $this->inquiryMsg;
-        }
+        
 
     }
 
-    $groupActOne = new Property();
-    $groupActOne->setPropertyValues('House in Greenheights', 'Sucat Paranaque', '9 million', 'This is a 7 yr old house', '25 sqm', 'Townhouse', ['brand new house', 'new']);
-    $groupActOne->addProperty();
-    $groupActOne->setPropertyValues('House in Ermita', 'Manila', '9 million', 'This is a 17 yr old house', '35 sqm', 'Mansion', ['old house', 'duplex', 'far']);
-    $groupActOne->addProperty();
-    $groupActOne->view();
+    class Inquiries extends Admin{
+        public $customerInquiries = array();
+        public function view()
+        {
+            for ($i = 0; $i < count($this->customerInquiries); $i++) {
+                print_r($this->customerInquiries[$i] . "<br/>");
+            }
+        }
+        public function create($inquiryMsg)
+        {
+            $this->customerInquiries[] = $inquiryMsg;
+        }
 
-    $groupActOne->createInquiry('How much for this house? I would like to inquire and maybe book an appointment');
-    $groupActOne->displayInquiry();
+        public function setInquiryValues($fullName, $email, $contactNumber, $message, $concernType, $dateCreated)
+        {
+            $this->fullName = $fullName;
+            $this->email = $email;
+            $this->contactNumber = $contactNumber;
+            $this->message = $message;
+            $this->concernType = $concernType;
+            $this->dateCreated = $dateCreated;
+        }
+        public function addInquiry()
+        {
+            $newInquiry = "Name: " . $this->fullName . "<br/>" . "Email: " . $this->email . "<br/>" . " Contact Number: " . $this->contactNumber .  "<br/>" . "Message: " . $this->message . "<br/>" . "Concern Type: " . $this->concernType . "<br/>" . " Date: " . $this->dateCreated . "<br/>";
+            $this->create($newInquiry);
+        }
+
+    }
+    echo 'Properties' . '<br/>';
+    $prop = new Property();
+    $prop->setPropertyValues('House in Greenheights', 'Sucat Paranaque', '9 million', 'This is a 7 yr old house', '25 sqm', 'Townhouse', ['brand new house', 'new']);
+    $prop->addProperty();
+    $prop->setPropertyValues('House in Ermita', 'Manila', '9 million', 'This is a 17 yr old house', '35 sqm', 'Mansion', ['old house', 'duplex', 'far']);
+    $prop->addProperty();
+    $prop->view();
+
+    echo 'Inquiries' . '<br/>';
+    $inq = new Inquiries();
+    $inq->setInquiryValues('Jose Miguel Ybera', 'josemiguel.ybera.iics@ust.edu.ph', '09123456789', 'Hi i would like to inquire for a house in your page', 'inquiry', '10/19/2021');
+    $inq->addInquiry();
+    $inq->view();
  
 
 
